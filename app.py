@@ -21,11 +21,11 @@ def upload_video():
     frame_width = int(source.get(3))
     frame_height = int(source.get(4))
     size = (frame_width, frame_height)
-    result = cv2.VideoWriter('static/' + 'blackandwhite.mp4', cv2.VideoWriter_foucc(*'mp4v'), 30, size, 0)
+    result = cv2.VideoWriter('static/' + 'blackandwhite.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 30, size, 0)
     try:
         while True:
             status, frame_image = source.read()
-            cv2.cvtColor(frame_image, cv2.COLOR_RGB2GRAY)
+            gray = cv2.cvtColor(frame_image, cv2.COLOR_RGB2GRAY)
             result.write(gray)
             video_file = 'blackandwhite.mp4'
     except:
